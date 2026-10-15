@@ -102,5 +102,5 @@ def namuna10_list():
     conn.close()
     return render_template('namuna10_list.html', records=records)
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)
