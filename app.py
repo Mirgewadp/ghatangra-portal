@@ -23,7 +23,7 @@ if __name__ == '__main__':
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 def init_db():
     conn = sqlite3.connect('grampanchayat.db')
