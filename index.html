@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <title>घटांग्रा ग्रामपंचायत डॅशबोर्ड</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 30px; background-color: #f4f6f9;">
+
+    <!-- कर वर्ष स्लॅब निवडण्यासाठी पॉप-अप विंडो (Popup Modal) -->
+    <div id="taxModal" style="display: block; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6);">
+        <div style="background-color: white; margin: 15% auto; padding: 25px; width: 400px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+            <h3 style="margin-top: 0; font-size: 18px; color: #333;">सुरुवात करण्यासाठी कर वर्षाचा स्लॅब निवडा</h3>
+            
+            <select id="taxSlab" style="width: 100%; padding: 10px; margin: 15px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                <option value="">कर श्रेणी निवडा</option>
+                <option value="2025-2029">वर्ष २०२५-२०२६ ते २०२८-२०२९</option>
+            </select>
+            
+            <div style="text-align: right; margin-top: 20px;">
+                <button onclick="saveModal()" style="padding: 8px 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">SAVE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- मुख्य डॅशबोर्ड सामग्री (सुरुवातीला लपलेली असेल) -->
+    <div id="mainDashboard" style="display: none;">
+        <h2>स्वागत आहे, घटांग्रा ग्रामपंचायत डिजिटल पोर्टल!</h2>
+        <p>येथे ग्रामपंचायतचे प्रॉपर्टी टॅक्स व इतर नोंदी पाहू शकता.</p>
+        
+        <hr>
+        <h3 id="selectedSlabText" style="color: #28a745;"></h3>
+        
+        <h3>महत्त्वाच्या सेवा व नमुने:</h3>
+        <ul>
+            <li><a href="/namuna8" style="color: #008CBA; font-weight: bold; text-decoration: none;">नमुना ८ (मालमत्ता कर मागणी नोंदणी व PDF) ➔</a></li>
+            <li><a href="/namuna9" style="color: #28a745; font-weight: bold; text-decoration: none;">नमुना ९ (वसूल पावती व PDF प्रिंट) ➔</a></li>
+            <li><a href="/namuna10" style="color: #dc3545; font-weight: bold; text-decoration: none;">नमुना १० (ग्रामपंचायत जमा व खर्च तपशील व PDF) ➔</a></li>
+        </ul>
+        
+        <br>
+        <a href="/" style="background-color: #f44336; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px;">लॉग आउट करा</a>
+    </div>
+
+    <script>
+    function saveModal() {
+        var slabSelect = document.getElementById('taxSlab');
+        var slabValue = slabSelect.value;
+        
+        if(slabValue === "") {
+            alert("कृपया कर श्रेणी निवडा!");
+            return;
+        }
+        
+        // पॉप-अप लपवा
+        document.getElementById('taxModal').style.display = 'none';
+        
+        // निवडलेला स्लॅब मजकुरात दाखवा
+        document.getElementById('selectedSlabText').innerText = "निवडलेला कर वर्ष स्लॅब: वर्ष २०२५-२०२६ ते २०२८-२०२९";
+        
+        // मुख्य डॅशबोर्ड दाखवा
+        document.getElementById('mainDashboard').style.display = 'block';
+    }
+    </script>
+
+</body>
+</html>
